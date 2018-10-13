@@ -24,6 +24,13 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (errMsg) => {
     console.log("Error Connecting to Mongoose! database " + errMsg);
 });
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./config/passport")(passport);
+
 //CORS Middleware
 app.use(cors());
 
